@@ -46,12 +46,16 @@ function Login({ onLoginSuccess }) {
             // Prova a parsare il testo come JSON
             const jsonResponse = JSON.parse(textResponse);
             console.log('Dati ricevuti:', jsonResponse);
-
+          
             // Aggiornare lo stato con i dati ottenuti
             setData(jsonResponse);
 
             // Chiamare la funzione onLoginSuccess se la risposta è corretta
-            onLoginSuccess();
+            if(jsonResponse.length === 0) {
+                alert('Dati inseriti non validi');
+            }else{
+                onLoginSuccess();
+            }
 
         } catch (error) {
             setError(error.message);

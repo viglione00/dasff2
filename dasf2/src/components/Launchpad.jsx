@@ -6,6 +6,7 @@ function Launchpad ()
 
   return (
     <div>
+        <p>sei loggato</p>
     </div>
   );
 }
