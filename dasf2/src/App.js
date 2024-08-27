@@ -18,7 +18,7 @@ function App() {
       <ul>
         {utenti.map(utente => (
           <li key={utente.test}>
-            {utente.nome} {utente.cognome}
+            {utente.test} 
           </li>
         ))}
       </ul>
