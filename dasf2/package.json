@@ -1,4 +1,5 @@
 {
+  "proxy": "http://dasff2.altervista.org",
   "name": "dasf2",
   "version": "0.1.0",
   "private": true,

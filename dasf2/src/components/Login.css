@@ -1,0 +1,162 @@
+/* Stile per il contenitore della login box */
+.log-box {
+    position: relative;
+    display: grid;
+    grid-column-start: 8;
+    grid-column-end: 14;
+    grid-row-start: 5;
+    grid-row-end: 15;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    background-color: #13124d;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #13124d;
+    border-style: solid;
+    padding: 20px; /* Aggiungi un po' di padding per la spaziatura */
+}
+
+.formLog {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    display: grid;
+    
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+/* Stile per le etichette degli input (username e password) */
+.user-label, .pass-label {
+    position: relative;
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background-color: #13124d;
+    color: white;
+    padding: 5px; /* Aggiungi un po' di padding per la spaziatura */
+}
+
+/* Stile specifico per la riga dell'etichetta username */
+.user-label {
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+/* Stile specifico per la riga dell'etichetta password */
+.pass-label {
+    grid-row-start: 5;
+    grid-row-end: 5;
+}
+
+/* Stile per i campi input (username e password) */
+.user-input, .pass-input {
+    position: relative;
+    display: grid;
+    grid-column-start: 5;
+    grid-column-end: 9;
+    color: black;
+    padding: 10px; /* Aggiungi un po' di padding per la spaziatura */
+    border-radius: 5px; /* Aggiungi un bordo arrotondato per migliorare l'aspetto */
+}
+
+/* Stile specifico per la riga del campo input username */
+.user-input {
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+/* Stile specifico per la riga del campo input password */
+.pass-input {
+    grid-row-start: 5;
+    grid-row-end: 5;
+}
+
+/* Stile per il bottone di login */
+.login-button {
+    position: relative;
+    display: grid;
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 8;
+    grid-row-end: 8;
+    color: #13124d;
+    border: none;
+    background-color: #f4c362;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px; /* Aggiungi padding per migliorare l'aspetto del bottone */
+    border-radius: 5px; /* Aggiungi un bordo arrotondato per migliorare l'aspetto */
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+    .log-box {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        grid-row-start: 1;
+        grid-row-end: -1;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        padding: 10px; /* Riduci il padding per dispositivi più piccoli */
+    }
+    
+.formLog {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+    .user-label, .pass-label, .user-input, .pass-input {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    .user-label, .pass-label {
+        grid-row-start: auto;
+        grid-row-end: auto;
+    }
+
+    .user-label {
+        grid-row-start: 3;
+        grid-row-end: 3;
+    }
+
+    .user-input {
+        grid-row-start: 4;
+        grid-row-end: 4;
+    }
+    .pass-label {
+        grid-row-start: 5;
+        grid-row-end: 5;
+    }
+
+    .pass-input {
+        grid-row-start: 6;
+        grid-row-end: 6;
+    }
+
+
+    .login-button {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        font-size: 10px; /* Riduci la dimensione del font per dispositivi più piccoli */
+    }
+}
+
+/* Media query per dispositivi molto piccoli (smartphone) */
+@media (max-width: 480px) {
+    .login-button {
+        font-size: 12px; /* Ulteriore riduzione della dimensione del font */
+        padding: 8px; /* Riduci il padding per un bottone più compatto */
+    }
+
+    .user-input, .pass-input {
+        font-size: 14px; /* Riduci la dimensione del font degli input */
+    }
+}
