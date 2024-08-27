@@ -2,77 +2,92 @@ import './Main.css';
 import './Login.css';
 
 import React, { useState } from 'react';
-function Login ({ onLoginSuccess }) {
- 
+
+function Login({ onLoginSuccess }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
 
-    // Gestore di evento per aggiornare lo stato dell'username
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
 
-    // Gestore di evento per aggiornare lo stato della password
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
 
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
-    // Funzione asincrona per gestire il submit
-    const handleSubmit = async() => {
-        try {
+    const handleSubmit = async (event) => {
+        event.preventDefault(); // Previeni l'azione di submit predefinita del form
 
-            console.log('sono qu');
-            // Fare una richiesta al file PHP
-            const response =  await fetch('http://dasff2.altervista.org/api/Utenti.php?method=getUtente');
-            console.log(response);
-            
-            // Controllare se la risposta è ok
+        try {
+            console.log('Invio della richiesta...');
+
+            const response = await fetch('http://dasff2.altervista.org/api/Utenti.php?method=getUtente', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    username: username,
+                    password: password,
+                }),
+            });
+
+            // Controlla lo stato della risposta
             if (!response.ok) {
-                console.log('Network response was not ok');
+                throw new Error('Network response was not ok');
             }
-    
-            // Convertire la risposta in JSON
-            const data =   await response.json();
-            console.log(data);
+
+            // Leggi la risposta come testo per debug
+            const textResponse = await response.text();
+            console.log('Risposta testuale:', textResponse);
+
+            // Prova a parsare il testo come JSON
+            const jsonResponse = JSON.parse(textResponse);
+            console.log('Dati ricevuti:', jsonResponse);
+
             // Aggiornare lo stato con i dati ottenuti
-            setData(data);
+            setData(jsonResponse);
+
+            // Chiamare la funzione onLoginSuccess se la risposta è corretta
+            onLoginSuccess();
+
         } catch (error) {
-            // Gestire gli errori
+            setError(error.message);
             console.error('Errore:', error);
         }
-        console.log('fine');
-    };
-    
-    // Funzione che viene chiamata al clic del bottone
-    const tryLog = () => {
-        alert(`Username: ${username}\nPassword: ${password}`);
     };
 
-    return(
-        <>
-            <div className='defaultView'>
-                <div className='log-box'>
-                    
-                    <form onSubmit={handleSubmit} className='formLog'>
-                        <p className='user-label'>Username:</p>
-                        <input className='user-input' 
-                               type='text' 
-                               value={username} 
-                               onChange={handleUsernameChange} />
+    return (
+        <div className='defaultView'>
+            <div className='log-box'>
+                <form onSubmit={handleSubmit} className='formLog'>
+                    <p className='user-label'>Username:</p>
+                    <input
+                        className='user-input'
+                        type='text'
+                        value={username}
+                        onChange={handleUsernameChange}
+                        placeholder="Inserisci username"
+                    />
 
-                        <p className='pass-label'>Password:</p>
-                        <input className='pass-input' 
-                                type='password' 
-                                value={password} 
-                                onChange={handlePasswordChange} />
+                    <p className='pass-label'>Password:</p>
+                    <input
+                        className='pass-input'
+                        type='password'
+                        value={password}
+                        onChange={handlePasswordChange}
+                        placeholder="Inserisci password"
+                    />
 
-                        <button className='login-button' type='submit'>Login</button>
-                    </form>
-                </div>
+                    <button className='login-button' type='submit'>Login</button>
+                </form>
+                {error && <p className='error-message'>Errore: {error}</p>}
+                {data && <pre className='data-output'>{JSON.stringify(data, null, 2)}</pre>}
             </div>
-        </>
-    )
+        </div>
+    );
 }
+
 export default Login;
