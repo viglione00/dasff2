@@ -23,7 +23,7 @@ function Login ({ onLoginSuccess }) {
     const handleSubmit = async() => {
         try {
 
-            console.log('sono qui');
+            console.log('sono qu');
             // Fare una richiesta al file PHP
             const response =  await fetch('http://dasff2.altervista.org/api/Utenti.php?method=getUtente');
             console.log(response);
