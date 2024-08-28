@@ -41,11 +41,11 @@ function Login({ onLoginSuccess }) {
 
             // Leggi la risposta come testo per debug
             const textResponse = await response.text();
-            console.log('Risposta testuale:', textResponse);
+           // console.log('Risposta testuale:', textResponse);
 
             // Prova a parsare il testo come JSON
             const jsonResponse = JSON.parse(textResponse);
-            console.log('Dati ricevuti:', jsonResponse);
+            //console.log('Dati ricevuti:', jsonResponse);
           
             // Aggiornare lo stato con i dati ottenuti
             setData(jsonResponse);

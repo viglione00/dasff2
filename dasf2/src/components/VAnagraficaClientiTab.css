@@ -1,0 +1,32 @@
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: black;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: black;
+}
+
+.data-table th {
+    background-color: #f4f4f4;
+    color: black;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+    color: black;
+}
+
+.data-table tr:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
