@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Login from "./Login";
 import TopToolbar from './TopToolbar';
 import Launchpad from './Launchpad';
+import VAnagraficaClienti from './VAnagraficaClienti';
 import './Main.css';
 function ViewContainer ()
 {
+    let nextView;
     const [currentView, setCurrentView] = useState('login');
 
     // Funzione per cambiare la view
@@ -17,11 +19,9 @@ function ViewContainer ()
           case 'login':
             return <Login onLoginSuccess={() => handleChangeView('launchpad')} />;
           case 'launchpad':
-            return <Launchpad />;
-
-            /*
-          case 'gestioneClienti':
-            return <MGestioneClienti />; */
+            return <Launchpad onChangeView={handleChangeView} />;;
+          case 'anagraficaClienti':
+            return <VAnagraficaClienti onChangeView={ () => handleChangeView(nextView)}/>; 
           default:
             return <Login />;
         }

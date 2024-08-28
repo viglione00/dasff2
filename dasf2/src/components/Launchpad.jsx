@@ -1,12 +1,15 @@
+import React from 'react';
 
-import React, { useState, useEffect } from 'react';
-function Launchpad ()
-{
-
+function Launchpad({ onChangeView }) {
+  // Funzione per gestire il click del bottone
+  const handleButtonClick = () => {
+    let nextView = 'anagraficaClienti';
+    onChangeView(nextView); // Passa 'nextView' alla funzione 'onChangeView'
+  };
 
   return (
     <div>
-        <p>sei loggato</p>
+      <button onClick={handleButtonClick}>Anagrafica Clienti</button>
     </div>
   );
 }
