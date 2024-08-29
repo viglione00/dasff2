@@ -3,6 +3,8 @@ import './VAnagraficaClientiTab.css'; // Assicurati di avere un CSS per la tabel
 import VAnagraficaClienti from './VAnagraficaClienti';
 
 function VAnagraficaClientiTab ({ data })  {
+
+    console.log('data:',data);
     if (!data || data.length === 0) {
         return <p className = 'error'>Nessun dato disponibile</p>;
     }
@@ -11,20 +13,20 @@ function VAnagraficaClientiTab ({ data })  {
         <table className="data-table">
             <thead>
                 <tr>
-                    <th>Codice Cliente</th>
-                    <th>Nome</th>
-                    <th>Cognome</th>
-                    <th>Città</th>
-                    <th>CAP</th>
-                    <th>Indirizzo</th>
-                    <th>Telefono</th>
-                    <th>Partita IVA</th>
-                    <th>Email</th>
-                    <th>PEC</th>
-                    <th>Note</th>
+                    <th className='thHeader'>Codice Cliente</th>
+                    <th className='thHeader'>Nome</th>
+                    <th className='thHeader'>Cognome</th>
+                    <th className='thHeader'>Città</th>
+                    <th className='thHeader'>CAP</th>
+                    <th className='thHeader'>Indirizzo</th>
+                    <th className='thHeader'>Telefono</th>
+                    <th className='thHeader'>Partita IVA</th>
+                    <th className='thHeader'>Email</th>
+                    <th className='thHeader'>PEC</th>
+                    <th className='thHeader'>Note</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className='anagraficaClientibody'>
                 {data.map((item, index) => (
                     <tr key={index}>
                         <td>{item.CODICE_CLIENTE}</td>

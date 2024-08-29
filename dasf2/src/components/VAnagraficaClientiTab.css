@@ -1,7 +1,10 @@
 .data-table {
     width: 100%;
+    height: 100%;
     border-collapse: collapse;
     color: black;
+    overflow-y: hidden;
+    max-height: 400px; /* Altezza massima prima di abilitare lo scroll */
 }
 
 .data-table th, .data-table td {
@@ -29,4 +32,19 @@
 .error {
     color: red;
     margin-top: 10px;
+}
+.thHeader {
+    background-color:  #64829e !important ;
+    color:  #13124d;
+}
+tbody {
+    
+    overflow-y: scroll;
+    max-height: 300px; /* Altezza massima prima di abilitare lo scroll */
+}
+
+.anagraficaClientibody {
+    
+    overflow-y: hidden;
+    max-height: 100px;
 }

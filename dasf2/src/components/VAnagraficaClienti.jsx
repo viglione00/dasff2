@@ -12,7 +12,7 @@ function VAnagraficaClienti({ onChangeView }) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
-    const [codiceCliente, setCodiceCliente] = useState('');
+    let [codiceCliente, setCodiceCliente] = useState('');
     const [nome, setNome] = useState('');
     const [cognome, setCognome] = useState('');
     const [indirizzo, setIndirizzo] = useState('');
@@ -64,20 +64,24 @@ function VAnagraficaClienti({ onChangeView }) {
 
         try {
             console.log('Invio della richiesta...');
-
+            if (codiceCliente === '')
+                {
+                    codiceCliente = '%%';
+                }
             const response = await fetch('http://dasff2.altervista.org/api/Clienti.php?method=getClienti', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    codiceCliente: codiceCliente,
+                    
+                    codice_cliente: codiceCliente,
                     nome: nome,
                     cognome: cognome,
                     indirizzo: indirizzo,
                     citta: citta,
                     email: email,
-                    ncell: ncell,
+                    telefono: ncell,
                     pec: pec,
                 }),
             });
@@ -260,8 +264,11 @@ function VAnagraficaClienti({ onChangeView }) {
                             <button className='btnFilter' onClick={() => onClickFilter()}>
                                 Filtri
                             </button>
+                            {
+                                console.log('filteredTab:', data)
+                            }
                             <div className='anagraficaClientiTab'>
-                                <VAnagraficaClientiTab data={filteredTab}/>
+                                <VAnagraficaClientiTab data={data}/>
                             </div>
                         </>
                     )}
