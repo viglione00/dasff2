@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Login from "./Login";
+import Login from "./vLogin/view/Login";
 import TopToolbar from './TopToolbar';
 import Launchpad from './Launchpad';
 import VAnagraficaClienti from './VAnagraficaClienti';
@@ -17,11 +17,11 @@ function ViewContainer ()
     const renderView = () => {
         switch (currentView) {
           case 'login':
-            return <Login onLoginSuccess={() => handleChangeView('launchpad')} />;
+              return <Login onChangeView={handleChangeView}></Login>
           case 'launchpad':
-            return <Launchpad onChangeView={handleChangeView} />;;
+              return <Launchpad onChangeView={handleChangeView} />;;
           case 'anagraficaClienti':
-            return <VAnagraficaClienti onChangeView={ () => handleChangeView(nextView)}/>; 
+              return <VAnagraficaClienti onChangeView={ () => handleChangeView(nextView)}/>; 
           default:
             return <Login />;
         }
@@ -30,7 +30,7 @@ function ViewContainer ()
       return (
         <>
         <div className='TopToolbar'><TopToolbar/></div>
-        <div>{renderView()}</div>
+        <div className='defaultView'>{renderView()}</div>
         <div></div>
         </>
       )

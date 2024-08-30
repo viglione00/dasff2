@@ -1,0 +1,119 @@
+/* Visto che la view è piccola, gestisco la vista da cellulare e quella da desktop 
+nello stesso file, a differenza delle view grandi che divido la gestione*/
+.divView {
+    display: grid;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+}
+
+.divBoxLogin {
+    display: grid;
+    grid-row: 8 / auto;
+    grid-column: 6 / 9;
+    background-color: #13124d ;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    color: white;
+}
+.mainForm {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+.labUsername {
+    display: grid;
+    grid-row: 3 ;
+    grid-column: 2 / 4 ;
+}
+.inputUsername {
+    grid-row: 3;
+    grid-column: 5 / 10;
+}
+.labPassword {
+    display: grid;
+    grid-row: 5 ;
+    grid-column: 2 / 4 ;
+}
+.inputPassword {
+    grid-row: 5;
+    grid-column: 5 / 10;
+}
+.login-button {
+    position: relative;
+    display: grid;
+    grid-column: 5 / 8;
+    grid-row: 7;
+    color: #13124d;
+    border: none;
+    background-color: #f4c362;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px; /* Aggiungi padding per migliorare l'aspetto del bottone */
+    border-radius: 5px; /* Aggiungi un bordo arrotondato per migliorare l'aspetto */
+}
+
+@media (max-width: 768px) {
+
+    .divView {
+        display: grid;
+        grid-row: 1 / -1;
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+    }
+    .divBoxLogin, .mainForm {
+        display: grid;
+        grid-row: 1/ -1;
+        grid-column: 1 / -1;
+        background-color: #13124d ;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        color: white;
+        padding: 10px;
+    }
+    .mainForm {
+        grid-row: 1 / -1;
+        grid-column: 1 / -1;
+    }
+    .labUsername {
+        display: grid;
+        grid-row: 2 ;
+        grid-column: -1 / 1 ;
+        align-self: end;
+    }
+    .inputUsername {
+        grid-row: 3;
+        grid-column: 1 / -1;
+        height: 80%;
+    }
+    .labPassword {
+        display: grid;
+        grid-row: 4 ;
+        grid-column: 1 / -1 ;
+        align-self: end;
+    }
+    .inputPassword {
+        grid-row: 5;
+        grid-column: 1 / -1;
+        height: 80%;
+    }
+    .login-button {
+        position: relative;
+        display: grid;
+        grid-column: 1 / -1;
+        grid-row: 7;
+        color: #13124d;
+        border: none;
+        background-color: #f4c362;
+        align-items: center;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 10px; /* Aggiungi padding per migliorare l'aspetto del bottone */
+        border-radius: 5px; /* Aggiungi un bordo arrotondato per migliorare l'aspetto */
+    }
+}
